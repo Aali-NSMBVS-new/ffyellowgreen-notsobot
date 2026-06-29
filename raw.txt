@@ -8,11 +8,11 @@
 [4]rubberband=pitch=2^(4/12)[4a];
 [5]rubberband=pitch=2^(-5/12)[5a];
 [0][1a][2a][3a][4a][5a]amix=6,volume=6,atrim=0.01" -c:a copy}}
-{if:{get:effect}|=|g major 1|then:{set:code|-vf negate,huesaturation=180:strength=180 -af "[0:a]anull,rubberband=pitch=2^(8/12)" -c:a copy}}
+{if:{get:effect}|=|g major 1|then:{set:code|-vf negate,huesaturation=180:strength=180 -filter_complex "[0:a]anull,rubberband=pitch=2^(8/12)" -c:a copy}}
 {sh:
 load {media}
 ffmpeg -i $FILE_1 {eval:{get:code}} ./output/ffyg_$(basename $FILE_1) 
 }
-{choose:whats 9+10|also try yellowgreenfx|are you purple|hi|steamed hams|i get rekt|ded kitay or detki daj|hey we feel so s- SHUT THE FREAK UP|i love cats|get ready for more effects on here}
+{choose:whats 9+10|also try yellowgreenfx|are you purple|hi|steamed hams|i get rekt|ded kitay or detki daj|hey we feel so s- SHUT THE FREAK UP|i love cats|get ready for more effects on here|memememememememememememememememememememememeeeemeemeemeemememeeemeeememmeemememmeememmmemeemememmemmemmeemmememmememememememe-}
 -# ffyellowgreen is on BETA, support the creator pls
 -# took {math:({unix}-{get:start})/1000} seconds btw
