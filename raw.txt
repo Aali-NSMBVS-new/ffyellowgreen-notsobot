@@ -2,7 +2,7 @@
 {set:start|{unix}}
 {if:{get:effect}|=|normal|then:{set:code|-c:a copy}}
 {if:{get:effect}|=|g major 1|then:{set:code|-vf negate,huesaturation=180:strength=180 -filter_complex "[0:a]anull,rubberband=pitch=2^(8/12)" -c:a copy}}
-{if:{get:effect}|=|g major 4|then:{set:code|-vf curves=all="0/0.5 0.5/1 1/0.5 0.5/0" -filter_complex "[0:a]anull[tmpa];[tmpa]rubberband=pitch=2^(5/12)[a1];[tmpa][a1]amix=2,volume=2" -c:a copy}}
+{if:{get:effect}|=|g major 4|then:{set:code|-vf curves=all='0/0 0.5/1.05 1/0.525' -filter_complex "[0:a]anull[tmpa];[tmpa]rubberband=pitch=2^(5/12)[a1];[tmpa][a1]amix=2,volume=2" -c:a copy}}
 {sh:
 load {media}
 ffmpeg -logerror warn -i $FILE_1 {eval:{get:code}} -af acontrast=1.125 ./output/ffyg_$(basename $FILE_1) 
