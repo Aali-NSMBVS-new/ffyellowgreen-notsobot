@@ -1,0 +1,14 @@
+{set:effect|{or:{arg:0}|normal}}
+{set:start|{unix}}
+{if:{get:effect}|=|normal|then:{set:code|-c:a copy}}
+{if:{get:effect}|=|g major|then:{set:code|-vf negate -filter_complex "[0:a]anull,split=6[0][1][2][3][4][5];
+[1]rubberband=pitch=2^(12/12)[1a];
+[2]rubberband=pitch=2^(-12/12)[2a];
+[3]rubberband=pitch=2^(7/12)[3a];
+[4]rubberband=pitch=2^(4/12)[4a];
+[5]rubberband=pitch=2^(-5/12)[5a];
+[0][1a][2a][3a][4a][5a]amix=6,volume=6,atrim=0.01" -c:a copy}}
+{if:{get:effect}|=|g major 1|then:{set:code|-vf negate,huesaturation=180:strength=180 -af "[0:a]anull,rubberband=pitch=2^(8/12)"}}
+{choose:whats 9+10|also try yellowgreenfx|are you purple|hi|steamed hams|i get rekt|ded kitay or detki daj|hey we feel so s- SHUT THE FREAK UP|i love cats|get ready for more effects on here}
+-# ffyellowgreen is on BETA, support the creator pls
+-# took {math:({unix}-{get:start})/1000} seconds btw
